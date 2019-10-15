@@ -3,7 +3,6 @@
 . /puppet/metalib/bin/lib.sh
 
 
-
 dpkg -l firmware-linux-nonfree 1>/dev/null 2>/dev/null
 if [ $? -ne 0 ]; then
 	rreturn 1 "$0 apt/dpkg non-free not installed"
@@ -30,13 +29,6 @@ sh /puppet/iptables/tests/iptables.sh
 if [ $? -ne 0 ]; then
 	rreturn 1 "$0 iptables differs"
 fi
-
-
-sh /puppet/bacula/tests/client.sh
-if [ $? -ne 0 ]; then
-	rreturn 1 "$0 bacula-fd not runinng"
-fi
-
 
 
 rreturn 0 "$0"
