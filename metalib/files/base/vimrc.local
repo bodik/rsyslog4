@@ -1,0 +1,6 @@
+syntax on
+if has("autocmd")
+	filetype plugin indent on
+endif
+set mouse=
+set ttymouse=

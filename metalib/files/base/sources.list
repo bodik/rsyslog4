@@ -1,0 +1,9 @@
+deb http://ftp.zcu.cz/pub/linux/debian buster main contrib non-free
+deb http://ftp.zcu.cz/pub/linux/debian buster-proposed-updates main contrib non-free
+deb http://ftp.zcu.cz/pub/linux/debian-security buster/updates main contrib non-free
+deb-src http://ftp.zcu.cz/pub/linux/debian buster main contrib non-free
+deb-src http://ftp.zcu.cz/pub/linux/debian buster-proposed-updates main contrib non-free
+deb-src http://ftp.zcu.cz/pub/linux/debian-security buster/updates main contrib non-free
+
+deb http://security.debian.org/ buster/updates main contrib non-free
+deb-src http://security.debian.org/ buster/updates main contrib non-free
