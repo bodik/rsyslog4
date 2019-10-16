@@ -7,7 +7,7 @@ if [ ! -d /puppet ]; then
 	git clone https://gitlab.meta.zcu.cz/bodik/rsyslog4.git /opt/rsyslog4
 	ln -sf /opt/rsyslog4 /puppet
 	cd /puppet
-	git remote set-url origin --push git@gitlab.meta.zcu.cz:bodik/rsyslog4.git
+	git remote set-url origin --push bodik@gitlab.meta.zcu.cz:bodik/rsyslog4.git
 else
 	cd /puppet
 	git pull
