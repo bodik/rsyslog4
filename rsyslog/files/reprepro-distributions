@@ -1,0 +1,9 @@
+Origin: RsyslogMetacentrum
+Label: RsyslogMetacentrum
+Suite: stable
+Codename: buster
+Version: 1.0
+Architectures: amd64
+Components: main
+Description: Rsyslog Metacentrum Debian packages
+SignWith: 0BB6257130EF3EED34B4057566BFF9375B374304

@@ -1,0 +1,13 @@
+*.* action(type="omfwd"
+  target="<%= @rediser_server %>"
+  port="47801"
+  protocol="tcp"
+  template="StoreFileFormat"
+  queue.FileName="omfwdredisersyslog"
+  queue.Type="LinkedList"
+  queue.MaxDiskSpace="100m"
+  queue.SaveOnShutdown="off"
+  queue.TimeoutEnqueue="0"
+  action.ResumeRetryCount="-1"
+)
+

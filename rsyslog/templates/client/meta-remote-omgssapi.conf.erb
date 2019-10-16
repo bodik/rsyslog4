@@ -1,0 +1,11 @@
+$ModLoad omgssapi
+$GSSForwardServiceName host
+$gssmode encryption
+
+$ActionQueueType LinkedList
+$ActionQueueFileName omgssapi1
+$ActionResumeRetryCount -1
+$ActionQueueSaveOnShutdown on
+$ActionQueueMaxDiskSpace 100m
+$ActionQueueTimeoutEnqueue 100
+*.* :omgssapi:<%= @rsyslog_server %>:515

@@ -1,0 +1,11 @@
+*.* action(type="omfwd"
+  protocol="tcp"
+  target="<%= @rsyslog_server %>"
+  port="514"
+  queue.FileName="omfwd1"
+  queue.Type="LinkedList"
+  queue.MaxDiskSpace="100m"
+  queue.SaveOnShutdown="on"
+  queue.TimeoutEnqueue="100"
+  action.ResumeRetryCount="-1"
+)

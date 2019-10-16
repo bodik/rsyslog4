@@ -28,7 +28,13 @@
 openstack.init build
 openstack.init ssh &apos;wget https://gitlab.meta.zcu.cz/bodik/rsyslog4/raw/master/bootstrap.install.sh &amp;&amp; sh -x bootstrap.install.sh&apos;
 openstack.init ssh &quot;cd /puppet &amp;&amp; git checkout ${BRANCH}&quot;
-############</command>
+############
+
+openstack.init ssh &apos;cd /puppet &amp;&amp; sh phase2.install.sh&apos;
+openstack.init ssh &apos;cd /puppet &amp;&amp; sh metalib/tests/phase2.sh&apos;
+
+openstack.init ssh &apos;cd /puppet &amp;&amp; sh rsyslog-client.install.sh&apos;
+openstack.init ssh &apos;cd /puppet &amp;&amp; sh rsyslog/tests/client.sh&apos;</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>

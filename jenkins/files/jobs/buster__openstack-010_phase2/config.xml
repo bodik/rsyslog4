@@ -26,7 +26,7 @@
     <hudson.tasks.Shell>
       <command>export VMNAME=&quot;tester&quot;
 openstack.init build
-openstack.init ssh &apos;wget https://rsyslog.metacentrum.cz/rsyslog4.git/bootstrap.install.sh &amp;&amp; sh -x bootstrap.install.sh&apos;
+openstack.init ssh &apos;wget https://gitlab.meta.zcu.cz/bodik/rsyslog4/raw/master/bootstrap.install.sh &amp;&amp; sh -x bootstrap.install.sh&apos;
 openstack.init ssh &quot;cd /puppet &amp;&amp; git checkout ${BRANCH}&quot;
 ############
 

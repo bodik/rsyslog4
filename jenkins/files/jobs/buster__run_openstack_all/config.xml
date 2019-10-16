@@ -7,9 +7,9 @@
     <hudson.model.ParametersDefinitionProperty>
       <parameterDefinitions>
         <hudson.model.StringParameterDefinition>
-          <name>BRANCH</name>
+          <name>OPTS</name>
           <description></description>
-          <defaultValue>master</defaultValue>
+          <defaultValue>-p BRANCH=buster</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
       </parameterDefinitions>
@@ -24,11 +24,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>export VMNAME=&quot;tester&quot;
-openstack.init build
-openstack.init ssh &apos;wget https://gitlab.meta.zcu.cz/bodik/rsyslog4/raw/master/bootstrap.install.sh &amp;&amp; sh -x bootstrap.install.sh&apos;
-openstack.init ssh &quot;cd /puppet &amp;&amp; git checkout ${BRANCH}&quot;
-############</command>
+      <command>sh -x /puppet/jenkins/bin/run_jobs.sh &quot;^buster__openstack-&quot; ${OPTS}</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>

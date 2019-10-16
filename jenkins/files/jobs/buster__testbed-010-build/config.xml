@@ -24,11 +24,8 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>export VMNAME=&quot;tester&quot;
-openstack.init build
-openstack.init ssh &apos;wget https://gitlab.meta.zcu.cz/bodik/rsyslog4/raw/master/bootstrap.install.sh &amp;&amp; sh -x bootstrap.install.sh&apos;
-openstack.init ssh &quot;cd /puppet &amp;&amp; git checkout ${BRANCH}&quot;
-############</command>
+      <command>sh -x /puppet/rsyslog/test04/10_build_testbed.sh
+sh -x /puppet/rsyslog/test04/20_setup_configs.sh</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
