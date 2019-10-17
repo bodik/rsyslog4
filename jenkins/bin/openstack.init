@@ -36,7 +36,7 @@ vm_build() {
 	openstack.init destroy
 
 	openstack volume create --image "debian-10-x86_64" --size 40 ${VMNAME}
-	openstack server create --flavor "standard.small" --volume ${VMNAME} --key-name ${CLOUD_KEYID} --security-group default --network auto_allocated_network --wait ${VMNAME}
+	openstack server create --flavor "standard.medium" --volume ${VMNAME} --key-name ${CLOUD_KEYID} --security-group default --network auto_allocated_network --wait ${VMNAME}
 
 	FLOAT_IP=$(openstack floating ip create --description ${VMNAME} --column floating_ip_address --format value ${CLOUD_NETWORK})
 	openstack server add floating ip ${VMNAME} ${FLOAT_IP}
