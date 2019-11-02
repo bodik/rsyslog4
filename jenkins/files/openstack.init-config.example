@@ -1,0 +1,6 @@
+#!/bin/sh
+
+export SSHKEY="path_to_ssh_key"
+export CLOUD_KEYID="openstack_keyid"
+export CLOUD_NETWORK="openstack_network_name"
+export CLOUD_NETWORK_FP_POOL="openstack_floating_ip_pool_name"
