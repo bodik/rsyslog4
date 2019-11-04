@@ -30,7 +30,7 @@ NODES=$(${CLOUDBIN} list -f value -c Name | grep "rs-client" | awk '{print $1}')
 NODESCOUNT=$(echo ${NODES} | wc -w)
 SERVER_IP=$(openstack.init list -f value -c Name -c Networks | grep 'rs-server' | awk '{print $3}')
 SERVER_HOSTNAME=$(host ${SERVER_IP} | rev | awk '{print $1}' | rev | sed 's/\.$//')
-CLIENT_MANIFEST="class {'rsyslog::client': forward_type => 'omfwd', rsyslog_server => '${SERVER_HOSTNAME}'}"
+CLIENT_MANIFEST="class {'rsyslog::client': forward_type => '${FORWARD_TYPE}', rsyslog_server => '${SERVER_HOSTNAME}'}"
 echo "DEBUG: nodescount ${NODESCOUNT}"
 echo "DEBUG: server_hostname ${SERVER_HOSTNAME}"
 
@@ -81,7 +81,7 @@ case ${DISRUPT} in
 	;;
 
 	tcpkill)
-		${CLOUDBIN} ssh_multi 'rs-server' "/usr/bin/timeout 180 /puppet/rsyslog/test04/tcpkill -i eth0 port 515 or port 514 or port 516 2>/dev/null || /bin/true"
+		${CLOUDBIN} ssh_multi 'rs-server' "/usr/bin/timeout 180 tcpkill -i eth0 port 515 or port 514 or port 516 2>/dev/null || /bin/true"
 	;;
 
 	ipdrop)

@@ -17,6 +17,7 @@
       <values>
         <string>omfwd</string>
         <string>omrelp</string>
+        <string>omgssapi</string>
       </values>
     </hudson.matrix.TextAxis>
     <hudson.matrix.TextAxis>

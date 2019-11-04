@@ -1,0 +1,19 @@
+[libdefaults]
+	default_realm = <%= @realm %>
+	kdc_timesync = 1
+	ccache_type = 4
+	forwardable = true
+	proxiable = true
+	fcc-mit-ticketflags = true
+
+	allow_weak_crypto = true
+
+[realms]
+	<%= @realm %> = {
+		kdc = <%= @kdc_server %>
+		admin_server = <%= @kdc_server %>
+	}
+
+[domain_realm]
+	.flt.cloud.muni.cz = <%= @realm %>
+	flt.cloud.muni.cz = <%= @realm %>

@@ -48,11 +48,12 @@ vm_build() {
 		sleep 1
 	done
 	VMIP=$(openstack.init ip) || rreturn 1 "$0 build"
+	VMHOSTNAME=$(host -t A ${VMIP} | rev | awk '{print $1}' | rev | sed 's/\.$//')
 
 	for i in `seq 1 300`; do
-		ssh -i ${SSHKEY} -o 'StrictHostKeyChecking=no' -o 'UserKnownHostsFile=/dev/null' -o 'ConnectTimeout=5' -o 'LogLevel=quiet' debian@${VMIP} '/bin/true'
+		ssh -i ${SSHKEY} -o 'StrictHostKeyChecking=no' -o 'UserKnownHostsFile=/dev/null' -o 'ConnectTimeout=5' debian@${VMIP} '/bin/true'
 		if [ $? -eq 0 ]; then
-			ssh -i ${SSHKEY} -o 'StrictHostKeyChecking=no' -o 'UserKnownHostsFile=/dev/null' -o 'ConnectTimeout=5' -o 'LogLevel=quiet' debian@${VMIP} 'sudo cp ~/.ssh/authorized_keys /root/.ssh/authorized_keys'
+			ssh -i ${SSHKEY} -o 'StrictHostKeyChecking=no' -o 'UserKnownHostsFile=/dev/null' -o 'ConnectTimeout=5' debian@${VMIP} "sudo cp ~/.ssh/authorized_keys /root/.ssh/authorized_keys; sudo hostname ${VMHOSTNAME}"
 			rreturn 0 "$0 build"
 		else
 			echo "INFO: vm start wait"
