@@ -36,9 +36,3 @@ task :lint => :clean do
 	end
 	fail if linter.errors?
 end
-
-desc "Generate documentation from READMEs and manifests"
-task :doc do
-	sh "python /puppet/metalib/bin/generate_module_doc.py"
-end
-
