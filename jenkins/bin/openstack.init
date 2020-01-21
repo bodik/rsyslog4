@@ -110,7 +110,17 @@ vm_destroy() {
 	openstack server remove floating ip ${VMNAME} ${VMIP}
 	openstack floating ip delete ${VMIP}
 	openstack server delete --wait ${VMNAME}
+
 	openstack volume delete ${VMNAME}
+	for i in `seq 1 60`; do
+		openstack volume list --name ${VMNAME} -f csv -c Name | grep -q "\"${NAME}\""
+		if [ $? -eq 1 ]; then
+			rreturn 0 "$0 destroy"
+		fi
+		echo "INFO: volume delete wait"
+		sleep 5
+	done
+	rreturn 1 "$0 destroy"
 }
 
 
