@@ -107,7 +107,6 @@ class metalib::base() {
 		changes => [
 			'set /files/etc/ssh/sshd_config/GSSAPIAuthentication yes',
 			'set /files/etc/ssh/sshd_config/GSSAPICleanupCredentials yes',
-			'set /files/etc/ssh/sshd_config/PermitRootLogin yes'
 		],
 		require => Package['openssh-server'],
 		notify  => Service['ssh'],
